@@ -21,7 +21,7 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll() // Allow login endpoint
                         .anyRequest().authenticated() // Secure all other endpoints
                 )
-                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // Stateless session
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)); // Stateless session
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); // Add JWT filter
         return http.build();
